@@ -13,9 +13,9 @@ An example of a roll in Roll20 looks like the following: \(taken directly from R
 ### Roll20 Chat and Dice Syntax References:
 Found a number of references and have placed them here for ease of reference. If any of these prove to be poor references, let me know by posting in: https://github.com/TrishZwei/RWBYScripts/issues
 
-    * [Chat Commands](https://wiki.roll20.net/Complete_Guide_to_Macros_%26_Rolls#Chat_Commands) 
-    * [Dice Reference](https://help.roll20.net/hc/en-us/articles/360037773133-Dice-Reference)
-    * [Dice Reference \(old version\)](https://wiki.roll20.net/Complete_Guide_to_Macros_%26_Rolls#Dice_Syntax)
+* [Chat Commands](https://wiki.roll20.net/Complete_Guide_to_Macros_%26_Rolls#Chat_Commands) 
+* [Dice Reference](https://help.roll20.net/hc/en-us/articles/360037773133-Dice-Reference)
+* [Dice Reference \(old version\)](https://wiki.roll20.net/Complete_Guide_to_Macros_%26_Rolls#Dice_Syntax)
 
 ### Tasks: 
 - [ ] create a string that generates a basic roll \(eg: /r 2d10 \)
