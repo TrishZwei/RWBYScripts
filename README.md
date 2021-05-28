@@ -33,10 +33,26 @@ This is designed to help players track what actions they chose so they can creat
 - [ ] create an extra action reference that when chosen tells the players what they need to do \(ex: charge action \)
 
 ### Task Expansion Ideas:
-    1. Create a dictionary of adjectives and actions to create a possible scripted narrative sequence for players to speak during play based on the choices and order above.
-    2. Create a means for the party to be able to share their actions in real time so that they can be combined together. This may require a db, possibly Firebase. More research is needed on this idea.
+    1. Create a dictionary of adjectives and actions to create a possible scripted narrative sequence 
+    for players to speak during play based on the choices and order above.
+    2. Create a means for the party to be able to share their actions in real time so that they can 
+    be combined together. This may require a db, possibly Firebase. More research is needed on this idea.
 
-## Any additional ideas, please post in https://github.com/TrishZwei/RWBYScripts/issues 
+## Defense Threshold Tracker:
+When you exceed an attack roll by 5 or more \(in increments of 5\) you can deal additional damage and special effects to the target. If you exceed by a large amount \(ex: 15 over threshold\) it can be hard to keep track of all the things, especially when you start mixing tiers of damage. This should help players to keep track of what they need to add to their damage rolls.
+
+### Tasks: 
+- [ ] create HTML elements showing tiers. This will have the options for each tier as well as the lessor type \(ex: option to use +5 bonus as a tier +10 bonus \)
+- [ ] create output that displays the effects in combination
+- [ ] create a tool tip for each type of effect to make it easy for players to choose what they want.
+
+## Counter Attack Reactions Tracker:
+This will show the set defensive rolls and their descriptions. When you exceed defending by 5 or more you have some counter attack options, and this will display that as well. 
+### Tasks: 
+- [ ] create HTML elements showing the 5 defensive rolls. This will include the character attributes that you can counter attack with. 
+
+
+Any additional ideas, please post in https://github.com/TrishZwei/RWBYScripts/issues 
 
 
 
