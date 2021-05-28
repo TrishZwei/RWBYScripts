@@ -2,11 +2,14 @@
  A series of small utilities for RWBY Game on Roll20.
 
 ## Roll20 Roll Dice Script:
-This project is intended to generate a string to make a custom roll output that you can post in the chat of Roll 20. An example of a roll in Roll20 looks like the following: \(taken directly from Roll20 examples shown in game, modified slightly\) 
+This project is intended to generate a string to make a custom roll output that you can post in the chat of Roll 20. 
+An example of a roll in Roll20 looks like the following: \(taken directly from Roll20 examples shown in game, modified slightly\) 
+
     * /roll 2d10 or /r 2d10
         * this rolls 2d10 and sums them
     * /gmroll 2d6>5 or /gr 2d6>5
         * this secretly rolls the GM and checks to see if any d6 is greater than 5, reporting on the number of dice that are greater than 5, but not their sum total.
+
 ### Roll20 Chat and Dice Syntax References:
 Found a number of references and have placed them here for ease of reference. If any of these prove to be poor references, let me know by posting in: https://github.com/TrishZwei/RWBYScripts/issues
 
@@ -46,10 +49,10 @@ When you exceed an attack roll by 5 or more \(in increments of 5\) you can deal 
 - [ ] create output that displays the effects in combination
 - [ ] create a tool tip for each type of effect to make it easy for players to choose what they want.
 
-## Counter Attack Reactions Tracker:
-This will show the set defensive rolls and their descriptions. When you exceed defending by 5 or more you have some counter attack options, and this will display that as well. 
+## Counter Attack Reactions Info:
+This will show the set defensive rolls and their descriptions. There will be a reminder that when you exceed defending by 5 or more you have some counter attack options, and this will display that as well and what that means. 
 ### Tasks: 
-- [ ] create HTML elements showing the 5 defensive rolls. This will include the character attributes that you can counter attack with. 
+- [ ] create HTML elements showing the 5 defensive rolls. This will include the character attributes that you can use to counter attack with. 
 
 
 Any additional ideas, please post in https://github.com/TrishZwei/RWBYScripts/issues 
