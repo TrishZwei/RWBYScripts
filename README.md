@@ -36,10 +36,8 @@ This is designed to help players track what actions they chose so they can creat
 - [ ] create an extra action reference that when chosen tells the players what they need to do \(ex: charge action \)
 
 ### Task Expansion Ideas:
-    1. Create a dictionary of adjectives and actions to create a possible scripted narrative sequence 
-    for players to speak during play based on the choices and order above.
-    2. Create a means for the party to be able to share their actions in real time so that they can 
-    be combined together. This may require a db, possibly Firebase. More research is needed on this idea.
+1. Create a dictionary of adjectives and actions to create a possible scripted narrative sequence for players to speak during play based on the choices and order above.
+2. Create a means for the party to be able to share their actions in real time so that they can be combined together. This may require a db, possibly Firebase. More research is needed on this idea.
 
 ## Defense Threshold Tracker:
 When you exceed an attack roll by 5 or more \(in increments of 5\) you can deal additional damage and special effects to the target. If you exceed by a large amount \(ex: 15 over threshold\) it can be hard to keep track of all the things, especially when you start mixing tiers of damage. This should help players to keep track of what they need to add to their damage rolls.
