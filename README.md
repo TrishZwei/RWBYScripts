@@ -8,7 +8,8 @@ This project is intended to generate a string to make a custom roll output that 
     * /gmroll 2d6>5 or /gr 2d6>5
         * this secretly rolls the GM and checks to see if any d6 is greater than 5, reporting on the number of dice that are greater than 5, but not their sum total.
 ### Roll20 Chat and Dice Syntax References:
-Found a number of references and have placed them here for ease of reference. If any of these prove to be poor references, let me know by posting a bugfix.
+Found a number of references and have placed them here for ease of reference. If any of these prove to be poor references, let me know by posting in: https://github.com/TrishZwei/RWBYScripts/issues
+
     * [Chat Commands](https://wiki.roll20.net/Complete_Guide_to_Macros_%26_Rolls#Chat_Commands) 
     * [Dice Reference](https://help.roll20.net/hc/en-us/articles/360037773133-Dice-Reference)
     * [Dice Reference \(old version\)](https://wiki.roll20.net/Complete_Guide_to_Macros_%26_Rolls#Dice_Syntax)
@@ -35,7 +36,7 @@ This is designed to help players track what actions they chose so they can creat
     1. Create a dictionary of adjectives and actions to create a possible scripted narrative sequence for players to speak during play based on the choices and order above.
     2. Create a means for the party to be able to share their actions in real time so that they can be combined together. This may require a db, possibly Firebase. More research is needed on this idea.
 
-## Any additional ideas, please post in the features.
+## Any additional ideas, please post in https://github.com/TrishZwei/RWBYScripts/issues 
 
 
 
