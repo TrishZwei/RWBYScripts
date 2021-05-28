@@ -8,7 +8,8 @@ An example of a roll in Roll20 looks like the following: \(taken directly from R
     * /roll 2d10 or /r 2d10
         * this rolls 2d10 and sums them
     * /gmroll 2d6>5 or /gr 2d6>5
-        * this secretly rolls the GM and checks to see if any d6 is greater than 5, reporting on the number of dice that are greater than 5, but not their sum total.
+        * this secretly rolls the GM and checks to see if any d6 is greater than 5, 
+        reporting on the number of dice that are greater than 5, but not their sum total.
 
 ### Roll20 Chat and Dice Syntax References:
 Found a number of references and have placed them here for ease of reference. If any of these prove to be poor references, let me know by posting in: https://github.com/TrishZwei/RWBYScripts/issues
