@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>RWBY Scripts: Action Sequence</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
+	<style type="text/css">
+		.major, .minor, .capacity, .attack, .semblence, .move, .skill, .reload, .boost, .charge{
+			display: none;
+		}
+
+		.major.active, .minor.active, .capacity.active, .attack.active, .semblence.active, .move.active, .skill.active, .reload.active, .boost.active, .charge.active{
+			display: block;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>Action Sequence Tracker</h1>
+	<nav id="nav-menu" role="navigation">
+		<ul>
+			<li><a href="attack-dice.html">Attack Dice Script</a></li>
+			<li><a href="action-sequence.html">Action Sequence</a></li>
+			<li><a href="defense-threshold.html">Defense Threshold</a></li>
+			<li><a href="counter-attack.html">Counter Attack</a></li>
+		</ul>
+	</nav>
+		<p>Select inputs to create your series of actions, then put them in order.</p>
+		<div>initiative or reaction</div>
+		<h2>On Your Turn</h2>
+		<div class="turn-sequence">
+			<div class="one-action">
+				<h3>Action 1</h3>
+				<div class="type">
+				   <div class="pretty p-switch p-fill">
+			        <input type="radio" value="major" name="action-group-1" />
+			        <div class="state p-success">
+			            <label>Major</label>
+			        </div>
+			    	</div>
+				   <div class="pretty p-switch p-fill">
+			        <input type="radio" value="minor" name="action-group-1" />
+			        <div class="state p-success">
+			            <label>Minor</label>
+			        </div>
+			    	</div>			    						
+				   <div class="pretty p-switch p-fill">
+			        <input type="radio" value="capacity" name="action-group-1" />
+			        <div class="state p-success">
+			            <label>Capacity Enhancement</label>
+			        </div>
+			    	</div>			    						
+				</div> <!-- end type -->
+				<div class="major sub-action">
+					<h3>Major</h3>
+					<label>Attack <input name="group-1" type="radio" value="attack"></label>
+					<label>Semblence <input name="group-1" type="radio" value="semblence"></label>
+					<p class="attack">Making an Attack, regardless of type, is a Major Action.</p>
+					<p class="semblence">TUsing a Semblance, or trying to maintain an ongoing Semblance, is a Major Action.</p>
+				</div>
+				<div class="minor sub-action">
+					<h3>Minor</h3>
+					<label>Movement <input name="group-1" type="radio" value="move"></label>
+					<label>Skill Check <input name="group-1" type="radio" value="skill"></label>
+					<label>Reload <input name="group-1" type="radio" value="reload"></label>
+					<p class="move">The character moves one Range Increment closer or farther away from a target. (3 squares) </p>
+					<p class="skill">Making any Skill Check, including Dust Phials, is a Minor Action.</p>				
+					<p class="reload">Refilling Capacity by the character’s DIS+1 is a Minor Action.</p>				
+				</div>
+				<div class="capacity sub-action">
+					<h3>Capacity Enhancement</h3>
+					<label>Capacity Boost <input name="group-1" type="radio" value="boost"></label>
+					<label>Charge Attack <input name="group-1" type="radio" value="charge"></label>
+					<div class="boost">
+						<p>Characters can Capacity Boost when performing certain actions. The character consumes one Capacity to gain a bonus.</p>
+						<p><span class="bold italic">Melee Weapon Attack:</span> Gain +1 Accuracy.</p>
+						<p><span class="bold italic">Skill Check:</span> Increase a Skill Check roll by +1.</p>
+						<p>Typically, movement-based Checks such as Lift or Acrobatics can be Capacity Boosted, but so can some non-physical Checks such as Intimidation. Which Skill Checks can be boosted vary on the situation, and their relevance is determined by the GM.</p>
+					</div>				
+					<p class="charge">Text for charging action</p>
+				</div>						
+			</div>
+			<!-- end first one-action -->
+			<div class="one-action">
+				<h3>Action 2</h3>
+				<div class="type">
+				   <div class="pretty p-switch p-fill">
+			        <input type="radio" value="major" name="action-group-2" />
+			        <div class="state p-success">
+			            <label>Major</label>
+			        </div>
+			    	</div>
+				   <div class="pretty p-switch p-fill">
+			        <input type="radio" value="minor" name="action-group-2" />
+			        <div class="state p-success">
+			            <label>Minor</label>
+			        </div>
+			    	</div>			    						
+				   <div class="pretty p-switch p-fill">
+			        <input type="radio" value="capacity" name="action-group-2" />
+			        <div class="state p-success">
+			            <label>Capacity Enhancement</label>
+			        </div>
+			    	</div>			    						
+				</div> <!-- end type -->
+				<div class="major sub-action">
+					<h3>Major</h3>
+					<label>Attack <input name="group-2" type="radio" value="attack"></label>
+					<label>Semblence <input name="group-2" type="radio" value="semblence"></label>
+					<p class="attack">Making an Attack, regardless of type, is a Major Action.</p>
+					<p class="semblence">TUsing a Semblance, or trying to maintain an ongoing Semblance, is a Major Action.</p>
+				</div>
+				<div class="minor sub-action">
+					<h3>Minor</h3>
+					<label>Movement <input name="group-2" type="radio" value="move"></label>
+					<label>Skill Check <input name="group-2" type="radio" value="skill"></label>
+					<label>Reload <input name="group-2" type="radio" value="reload"></label>
+					<p class="move">The character moves one Range Increment closer or farther away from a target. (3 squares) </p>
+					<p class="skill">Making any Skill Check, including Dust Phials, is a Minor Action.</p>				
+					<p class="reload">Refilling Capacity by the character’s DIS+1 is a Minor Action.</p>				
+				</div>
+				<div class="capacity sub-action">
+					<h3>Capacity Enhancement</h3>
+					<label>Capacity Boost <input name="group-2" type="radio" value="boost"></label>
+					<label>Charge Attack <input name="group-2" type="radio" value="charge"></label>
+					<div class="boost">
+						<p>Characters can Capacity Boost when performing certain actions. The character consumes one Capacity to gain a bonus.</p>
+						<p><span class="bold italic">Melee Weapon Attack:</span> Gain +1 Accuracy.</p>
+						<p><span class="bold italic">Skill Check:</span> Increase a Skill Check roll by +1.</p>
+						<p>Typically, movement-based Checks such as Lift or Acrobatics can be Capacity Boosted, but so can some non-physical Checks such as Intimidation. Which Skill Checks can be boosted vary on the situation, and their relevance is determined by the GM.</p>
+					</div>				
+					<p class="charge">Text for charging action</p>
+				</div>						
+			</div>
+			<!-- end second one-action -->
+			<div class="one-action">
+				<h3>Action 3</h3>
+				<div class="type">
+				   <div class="pretty p-switch p-fill">
+			        <input type="radio" value="major" name="action-group-3" />
+			        <div class="state p-success">
+			            <label>Major</label>
+			        </div>
+			    	</div>
+				   <div class="pretty p-switch p-fill">
+			        <input type="radio" value="minor" name="action-group-3" />
+			        <div class="state p-success">
+			            <label>Minor</label>
+			        </div>
+			    	</div>			    						
+				   <div class="pretty p-switch p-fill">
+			        <input type="radio" value="capacity" name="action-group-3" />
+			        <div class="state p-success">
+			            <label>Capacity Enhancement</label>
+			        </div>
+			    	</div>			    						
+				</div> <!-- end type -->
+				<div class="major sub-action">
+					<h3>Major</h3>
+					<label>Attack <input name="group-3" type="radio" value="attack"></label>
+					<label>Semblence <input name="group-3" type="radio" value="semblence"></label>
+					<p class="attack">Making an Attack, regardless of type, is a Major Action.</p>
+					<p class="semblence">TUsing a Semblance, or trying to maintain an ongoing Semblance, is a Major Action.</p>
+				</div>
+				<div class="minor sub-action">
+					<h3>Minor</h3>
+					<label>Movement <input name="group-3" type="radio" value="move"></label>
+					<label>Skill Check <input name="group-3" type="radio" value="skill"></label>
+					<label>Reload <input name="group-3" type="radio" value="reload"></label>
+					<p class="move">The character moves one Range Increment closer or farther away from a target. (3 squares) </p>
+					<p class="skill">Making any Skill Check, including Dust Phials, is a Minor Action.</p>				
+					<p class="reload">Refilling Capacity by the character’s DIS+1 is a Minor Action.</p>				
+				</div>
+				<div class="capacity sub-action">
+					<h3>Capacity Enhancement</h3>
+					<label>Capacity Boost <input name="group-3" type="radio" value="boost"></label>
+					<label>Charge Attack <input name="group-3" type="radio" value="charge"></label>
+					<div class="boost">
+						<p>Characters can Capacity Boost when performing certain actions. The character consumes one Capacity to gain a bonus.</p>
+						<p><span class="bold italic">Melee Weapon Attack:</span> Gain +1 Accuracy.</p>
+						<p><span class="bold italic">Skill Check:</span> Increase a Skill Check roll by +1.</p>
+						<p>Typically, movement-based Checks such as Lift or Acrobatics can be Capacity Boosted, but so can some non-physical Checks such as Intimidation. Which Skill Checks can be boosted vary on the situation, and their relevance is determined by the GM.</p>
+					</div>				
+					<p class="charge">Text for charging action</p>
+				</div>						
+			</div>
+			<!-- end third one-action -->			
+		</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	// https://lokesh-coder.github.io/pretty-checkbox/#installation
+
+//One click function to rule them all:
+	function showActions(e, ele){
+		e.stopPropagation();
+		let action = e.target.value;
+		console.log(action);
+		let section;
+
+		if(ele == 'type'){
+			section = $(e.target).parents('.one-action');
+		}else{
+			section = $(e.target).parents('.sub-action');
+		}
+		console.log(section)
+		section.find('.active').hide().removeClass('active');
+		section.find('.'+action).show().addClass('active');
+	}
+
+
+
+	$('.type').click( function(e){
+		showActions(e, 'type');
+	})
+
+	$('.sub-action').on("click", function(e){
+			showActions(e, 'sub');
+		})
+</script>	
+</body>
+</html>

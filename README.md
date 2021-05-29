@@ -25,17 +25,15 @@ Found a number of references and have placed them here for ease of reference. If
 - [ ] create a comparison to add to the total of the string to show success or failure against a Grimm Defense value \(rather than individual dice comparison like above\)
 - [ ] create function and call to function for output of string to page. The output could be in a specified div or even the alert or other 'popup like element'
 
-## RWBY Action Sequence tracker:
+## RWBY Action Sequence:
 This is designed to help players track what actions they chose so they can create compelling descriptions of their actions in game. There should be a drag and drop so they can place their actions in order.
 
 ### Tasks: 
-- [ ] create HTML elements to store minor and major actions 
-- [ ] create options within to show what you are doing based on type of action \(ex: moving, semblance, attack, etc.\)
-- [ ] create sortable functionality, so actions are able to be placed in order.
-- [ ] create a method that checks the type of actions so that nobody takes more than two major actions in a sequence.
-- [ ] create an extra action reference that when chosen tells the players what they need to do \(ex: charge action \)
+- [x] create HTML elements to show major, minor and capacity enhancement actions 
+- [x] create options within to show what you are doing based on type of action \(ex: moving, semblance, attack, etc.\)
+- [ ] create a method that checks the type of actions so that nobody takes more than two major actions in a sequence, especially with the charging action.
 
-### Task Expansion Ideas:
+### Expansion Ideas:
 1. Create a dictionary of adjectives and actions to create a possible scripted narrative sequence for players to speak during play based on the choices and order above.
 2. Create a means for the party to be able to share their actions in real time so that they can be combined together. This may require a db, possibly Firebase. More research is needed on this idea.
 
