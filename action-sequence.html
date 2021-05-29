@@ -5,10 +5,61 @@
 	<title>RWBY Scripts: Action Sequence</title>
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
 	<style type="text/css">
+		body{
+			font-family: Tahoma;
+		}
 		.major, .minor, .capacity, .attack, .semblence, .move, .skill, .reload, .boost, .charge, .section-two, .section-three{
 			display: none;
 		}
+		.overlay {
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  background: rgba(0, 0, 0, 0.5);
+		  opacity: 0;
+		  transition: .5s ease;
+		  z-index: -1;
+		}
 
+		.overlay.active {
+		  opacity: 1;
+		  z-index: 2;
+		}
+
+		.modal {
+		  max-height: calc(100% - 100px);
+		  position: fixed;
+		  top: 50%;
+		  left: 50%;
+		  max-width: 450px;
+		  transform: translate(-50%, -50%);
+		  color: #4a5666;
+		  background: linear-gradient(to bottom right, white, #F8F8F8) !important;
+		  box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 35px 50px -25px rgba(0, 0, 0, 0.3), 0 85px 60px -25px rgba(0, 0, 0, 0.1);
+		  z-index: 3;
+		  visibility: hidden;
+		  opacity: 0;
+		  transition: .5s ease;
+		  border-radius: .5em;
+		}
+
+		.modal h2 {
+		  margin: 0;
+		  font-weight: 400;
+		  padding: 1rem;
+		  border-bottom: 1px solid #DDE0E7;
+		}
+
+		.modal p{
+		  padding: 1rem;
+		}
+
+		.modal.active {
+		  visibility: visible;
+		  opacity: 1;
+		}
 
 	</style>
 </head>
@@ -188,6 +239,18 @@
 			</div>
 			<!-- end third one-action -->			
 		</div>
+<!-- modal window -->
+<div class="overlay"></div>
+<div class="modal">
+  <p>
+  	You have declared too many actions. You get a maximum of 5 action points. Please alter your selected actions upon returning to the page. Your last action has been removed from the sequence. A reminder of point values:
+  		<ul>
+			<li>Major actions are 2 points</li>
+			<li>Minor actions and capacity boost are 1 point</li>
+			<li>Charge Attack is 4 points</li>
+		</ul>
+  </p>
+</div>		
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -276,8 +339,9 @@ function checkActionTotal(){
 		if(totalActions > 5){
 			//pop up modal message
 			//message should be: 'You have declared too many actions. You get a maximum of 5 action points. (reiterate the list of points) Please alter your selected actions upon returning to the page.'
-			let value = eleChecked.val();
-			console.log(value);
+			$(".overlay, .modal").addClass("active");
+			// let value = eleChecked.val();
+			// console.log(value);
 			eleChecked.prop("checked", false);
 		}
 	})
@@ -292,6 +356,19 @@ function checkActionTotal(){
 	$('.sub-action').on("click", function(e){
 			showActions(e, 'sub');
 		})
+
+//modal
+$(".close, .overlay").on("click", function(){
+   $(".overlay, .modal").removeClass("active");
+});
+
+$(document).keyup(function(e) {
+  //e.keyCode = e.which
+  if (e.keyCode === 27) {
+    $(".overlay, .modal").removeClass("active");
+  }
+});
+
 </script>	
 </body>
 </html>
