@@ -5,13 +5,10 @@
 	<title>RWBY Scripts: Action Sequence</title>
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
 	<style type="text/css">
-		.major, .minor, .capacity, .attack, .semblence, .move, .skill, .reload, .boost, .charge{
+		.major, .minor, .capacity, .attack, .semblence, .move, .skill, .reload, .boost, .charge, .section-two, .section-three{
 			display: none;
 		}
 
-		.major.active, .minor.active, .capacity.active, .attack.active, .semblence.active, .move.active, .skill.active, .reload.active, .boost.active, .charge.active{
-			display: block;
-		}
 
 	</style>
 </head>
@@ -25,12 +22,17 @@
 			<li><a href="counter-attack.html">Counter Attack</a></li>
 		</ul>
 	</nav>
-		<p>Select inputs to create your series of actions, then put them in order.</p>
-		<div>initiative or reaction</div>
-		<h2>On Your Turn</h2>
+		<p>Select inputs to create your series of actions. After you select your first action, the next action slot will become available to you. Select up to a maximum of 5 points of actions in three action slots.
+			<ul>
+				<li>Major actions are 2 points</li>
+				<li>Minor actions and capacity boost are 1 point</li>
+				<li>Charge Attack is 4 points</li>
+			</ul>
+		</p>
+		<h2>Your Actions</h2>
 		<div class="turn-sequence">
-			<div class="one-action">
-				<h3>Action 1</h3>
+			<div class="one-action section-one">
+				<h3>Action Slot 1</h3>
 				<div class="type">
 				   <div class="pretty p-switch p-fill">
 			        <input type="radio" value="major" name="action-group-1" />
@@ -81,8 +83,8 @@
 				</div>						
 			</div>
 			<!-- end first one-action -->
-			<div class="one-action">
-				<h3>Action 2</h3>
+			<div class="one-action section-two">
+				<h3>Action Slot 2</h3>
 				<div class="type">
 				   <div class="pretty p-switch p-fill">
 			        <input type="radio" value="major" name="action-group-2" />
@@ -133,8 +135,8 @@
 				</div>						
 			</div>
 			<!-- end second one-action -->
-			<div class="one-action">
-				<h3>Action 3</h3>
+			<div class="one-action section-three">
+				<h3>Action Slot 3</h3>
 				<div class="type">
 				   <div class="pretty p-switch p-fill">
 			        <input type="radio" value="major" name="action-group-3" />
@@ -160,7 +162,7 @@
 					<label>Attack <input name="group-3" type="radio" value="attack"></label>
 					<label>Semblence <input name="group-3" type="radio" value="semblence"></label>
 					<p class="attack">Making an Attack, regardless of type, is a Major Action.</p>
-					<p class="semblence">TUsing a Semblance, or trying to maintain an ongoing Semblance, is a Major Action.</p>
+					<p class="semblence">Using a Semblance, or trying to maintain an ongoing Semblance, is a Major Action.</p>
 				</div>
 				<div class="minor sub-action">
 					<h3>Minor</h3>
@@ -191,23 +193,96 @@
 <script type="text/javascript">
 	// https://lokesh-coder.github.io/pretty-checkbox/#installation
 
+let eleChecked;
+
 //One click function to rule them all:
 	function showActions(e, ele){
 		e.stopPropagation();
-		let action = e.target.value;
-		console.log(action);
-		let section;
 
+		$('.section-two, .section-three').hide();
+		
+		eleChecked = $(e.target);
+		console.log(eleChecked);
+		let action = e.target.value;
+		//console.log(action);
+		let section;
 		if(ele == 'type'){
 			section = $(e.target).parents('.one-action');
+			section.find('.sub-action input:checked').prop('checked', false);
 		}else{
 			section = $(e.target).parents('.sub-action');
 		}
-		console.log(section)
+		//console.log(section)
+		let totalActions = checkActionTotal();
 		section.find('.active').hide().removeClass('active');
-		section.find('.'+action).show().addClass('active');
+		
+		
+		console.log('total actions is:', totalActions);	
+		//total actions must be less than 5 for the next section to show up.
+		if(totalActions > 0 && $('.section-two').is(':hidden') ){
+			//show next section:
+			$('.section-two').show();
+		}
+
+		if(totalActions > 1 && totalActions < 5 && $('.section-two').is(':visible') ){
+			$('.section-three').show();
+		}
+
+		if(totalActions < 6){
+			section.find('.'+action).show().addClass('active');
+		}else{
+			$('.section-three .sub-action input:checked').prop('checked', false)
+		}
+		
 	}
 
+function checkActionTotal(){
+	let checkedButtons = $( "input:checked" ) //.length;
+	/*above code gathers up all the checkedButtons. 
+	We need to know the values of all the buttons.
+	I've assigned 2 points for major actions, 1 point for minor actions and capacity boost, 4 points for charge (as it takes 2 major actions) Max point value at any given point is 5.
+	*/
+	let totalActions = 0;
+	
+	checkedButtons.each( function(){
+		let buttonValue = $(this).val();
+		console.log(buttonValue)
+		switch(buttonValue){
+			//me likey switch statements in cases of lots of multiple values because they are easier to read.
+			case 'charge':
+				totalActions += 4;
+			break;
+
+			case 'attack':
+			case 'semblence':
+				totalActions += 2;
+			break;
+
+			case 'move':
+			case 'skill':
+			case 'reload':
+			case 'boost':
+			//this action should always be good.
+				totalActions += 1;
+			break;
+
+			default:
+			totalActions += 0
+
+		}
+
+		console.log(totalActions)
+
+		if(totalActions > 5){
+			//pop up modal message
+			//message should be: 'You have declared too many actions. You get a maximum of 5 action points. (reiterate the list of points) Please alter your selected actions upon returning to the page.'
+			let value = eleChecked.val();
+			console.log(value);
+			eleChecked.prop("checked", false);
+		}
+	})
+	return totalActions;
+} //end showActions()
 
 
 	$('.type').click( function(e){
