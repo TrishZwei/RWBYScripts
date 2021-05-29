@@ -32,7 +32,9 @@ This is designed to help players track what actions they chose so they can creat
 - [x] create HTML elements to show major, minor and capacity enhancement actions 
 - [x] create options within to show what you are doing based on type of action \(ex: moving, semblance, attack, etc.\)
 - [x] create a method that checks the type of actions so that nobody takes more than two major actions in a sequence, especially with the charging action.
-- [ ] create modal window for message when a user attempts to take more actions than allowable.
+- [x] create modal window for message when a user attempts to take more actions than allowable.
+- [ ] find testors, get feedback
+
 
 ### Expansion Ideas:
 1. Create a dictionary of adjectives and actions to create a possible scripted narrative sequence for players to speak during play based on the choices and order above.
