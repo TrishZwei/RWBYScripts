@@ -26,7 +26,7 @@ Found a number of references and have placed them here for ease of reference. If
 - [ ] create function and call to function for output of string to page. The output could be in a specified div or even the alert or other 'popup like element'
 
 ## RWBY Action Sequence:
-This is designed to help players track what actions they chose so they can create compelling descriptions of their actions in game. There should be a drag and drop so they can place their actions in order.
+This is designed to help players track what actions they chose so they can create compelling descriptions of their actions in game.
 
 ### Tasks: 
 - [x] create HTML elements to show major, minor and capacity enhancement actions 
