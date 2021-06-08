@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
 	<title>RWBY Scripts: Action Sequence</title>
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
 	<style type="text/css">
-		body{
-			font-family: Tahoma;
+
+		*{
+			box-sizing: border-box ;
 		}
-		.major, .minor, .capacity, .attack, .semblence, .move, .skill, .reload, .boost, .charge, .section-two, .section-three{
+
+		body{
+			/*text-align: center;*/
+			margin: 0 auto;
+			font-family: Tahoma;
+			width: 96%;
+
+		}
+
+		h1{
+			text-align: center;
+			margin-top: 0;
+		}
+
+		.major, .minor, .capacity, .attack, .semblence, .move, .skill, .reload, .boost, .charge, .section-two, .section-three {
 			display: none;
 		}
+
+		.message{
+			display: none;
+			font-weight: bold;
+		}
+
 		.overlay {
 		  position: fixed;
 		  top: 0;
@@ -61,6 +83,39 @@
 		  opacity: 1;
 		}
 
+nav ul {
+    list-style: none;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+
+	}
+
+/*	
+.active{
+		background-color: yellow;
+	}
+*/
+
+@media only screen and (min-width: 620px){
+		nav ul {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+		}
+
+}
+
+/*ghost css
+*{
+	background-color: black;
+	border: 1px solid red;
+	color:  #00FF00;
+}
+*/
+
 	</style>
 </head>
 <body>
@@ -73,7 +128,8 @@
 			<li><a href="counter-attack.html">Counter Attack</a></li>
 		</ul>
 	</nav>
-		<p>Select inputs to create your series of actions. After you select your first action, the next action slot will become available to you. Select up to a maximum of 5 points of actions in three action slots.
+		<p>Select inputs to create your series of actions. After you select your first action, the next action slot will become available to you. Select up to a maximum of 5 points of actions in three action slots. There will be a message displayed when you have reached your maximum.
+		= 
 			<ul>
 				<li>Major actions are 2 points</li>
 				<li>Minor actions and capacity boost are 1 point</li>
@@ -240,78 +296,82 @@ additional 3 Capacity. The character can add a bonus equal to the spent Capacity
 			</div>
 			<!-- end third one-action -->			
 		</div>
+		<div class="message">You have reached the maximum number of actions for this turn.</div>
 <!-- modal window -->
-<div class="overlay"></div>
-<div class="modal">
-  <p>
-  	You have declared too many actions. You get a maximum of 5 action points. Please alter your selected actions upon returning to the page. Your last action has been removed from the sequence. A reminder of point values:
-  		<ul>
-			<li>Major actions are 2 points</li>
-			<li>Minor actions and capacity boost are 1 point</li>
-			<li>Charge Attack is 4 points</li>
-		</ul>
-  </p>
-</div>		
-
+	<div class="overlay"></div>
+	<div class="modal">
+	  <p>
+	  	You have declared too many actions. You get a maximum of 5 action points. Please alter your selected actions upon returning to the page. Your last action has been removed from the sequence. A reminder of point values:
+	  		<ul>
+				<li>Major actions are 2 points</li>
+				<li>Minor actions and capacity boost are 1 point</li>
+				<li>Charge Attack is 4 points</li>
+			</ul>
+	  </p>
+	</div>		
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	// https://lokesh-coder.github.io/pretty-checkbox/#installation
 
+let clickedSection;
 let eleChecked;
+let checkedSections = [];
+let actionsList = ['','',''];
+let totalActions = 0;
 
-//One click function to rule them all:
-	function showActions(e, ele){
-		e.stopPropagation();
 
-		$('.section-two, .section-three').hide();
-		
-		eleChecked = $(e.target);
-		console.log(eleChecked);
+	$('.type').click( function(e){
 		let action = e.target.value;
-		//console.log(action);
-		let section;
-		if(ele == 'type'){
-			section = $(e.target).parents('.one-action');
-			section.find('.sub-action input:checked').prop('checked', false);
-		}else{
-			section = $(e.target).parents('.sub-action');
-		}
-		//console.log(section)
-		let totalActions = checkActionTotal();
-		section.find('.active').hide().removeClass('active');
-		
-		
-		console.log('total actions is:', totalActions);	
-		//total actions must be less than 5 for the next section to show up.
-		if(totalActions > 0 && $('.section-two').is(':hidden') ){
-			//show next section:
-			$('.section-two').show();
-		}
+   	let section = $(e.target).parents('.one-action');
+   	//check to see if this section has already been checked....
+   	clickedSection = section[0].classList[1];
+   	console.log(clickedSection)
+   	if(checkedSections.indexOf(clickedSection) == -1){
+   		checkedSections.push(section[0].classList[1]);
+   		}
+   	console.log(checkedSections);
+   	section.find('.active').hide().removeClass('active');
+   	section.find('.sub-action input:checked').prop('checked', false);
+   	section.find('.'+action).show().addClass('active');
+   	//none of these actions get added to the list of actions.
 
-		if(totalActions > 1 && totalActions < 6 && $('.section-two').is(':visible') ){
+	})
+
+	$('.sub-action').on("click", function(e){
+		let action = e.target.value;
+		let section = $(e.target).parents('.sub-action');
+		//there should be one action per section.
+		if(action != undefined){
+			//they clicked on an element that has a value... 
+
+			if(clickedSection == 'section-one'){
+				actionsList[0] = action;
+			}else if(clickedSection == 'section-two' ){
+				actionsList[1] = action;			
+			}else{
+				actionsList[2] = action;
+			}
+		}
+//		console.log(actionsList)
+		totalActions = checkActionTotal();
+
+		if( $('.section-two').is(':visible') && actionsList[1] != '' && totalActions < 5){
 			$('.section-three').show();
-		}
+		}else if ($('.section-one').is(':visible') && actionsList[0] != ''){
+			$('.section-two').show();
 
-		if(totalActions < 6){
-			section.find('.'+action).show().addClass('active');
-		}else{
-			$('.section-three .sub-action input:checked').prop('checked', false)
 		}
 		
-	}
+		
+
+		})
 
 function checkActionTotal(){
-	let checkedButtons = $( "input:checked" ) //.length;
-	/*above code gathers up all the checkedButtons. 
-	We need to know the values of all the buttons.
-	I've assigned 2 points for major actions, 1 point for minor actions and capacity boost, 4 points for charge (as it takes 2 major actions) Max point value at any given point is 5.
-	*/
-	let totalActions = 0;
-	
-	checkedButtons.each( function(){
-		let buttonValue = $(this).val();
-		console.log(buttonValue)
-		switch(buttonValue){
+	totalActions = 0;
+	checkedSections.length;
+
+	actionsList.forEach( function(item, index){
+		switch(item){
 			//me likey switch statements in cases of lots of multiple values because they are easier to read.
 			case 'charge':
 				totalActions += 4;
@@ -326,7 +386,6 @@ function checkActionTotal(){
 			case 'skill':
 			case 'reload':
 			case 'boost':
-			//this action should always be good.
 				totalActions += 1;
 			break;
 
@@ -335,32 +394,57 @@ function checkActionTotal(){
 
 		}
 
-		console.log(totalActions)
-
+		console.log('checking in the for each: ', totalActions);
 		if(totalActions > 5){
-			//pop up modal message
-			//message should be: 'You have declared too many actions. You get a maximum of 5 action points. (reiterate the list of points) Please alter your selected actions upon returning to the page.'
-			$(".overlay, .modal").addClass("active");
-			// let value = eleChecked.val();
-			// console.log(value);
-			eleChecked.prop("checked", false);
+				//pop up modal message
+				//message should be: 'You have declared too many actions. You get a maximum of 5 action points. (reiterate the list of points) Please alter your selected actions upon returning to the page.'
+				$(".overlay, .modal").addClass("active");
+				
+				if(clickedSection == 'section-two' || clickedSection == 'section-one' ){
+					actionsList[1] = '';
+					actionsList[2] = '';
+				$('.section-two .active input:checked, .section-three .active input:checked ').prop('checked', false);
+				$('.section-three').hide().find('.active').removeClass('active');
+				
+				}else if (clickedSection == 'section-three'){
+					actionsList[2] = '';
+				$('.section-three').hide();
+				$('.section-three .active input:checked').prop('checked', false);
+				}				
+				//re-run checkActionTotal
+				checkActionTotal();
 		}
-	})
+
+		if(totalActions == 5){
+			$('.message').show();
+		}else{
+			$('.message').hide();
+		}
+
+
+
+	}) //end forEach
+	
+
+
 	return totalActions;
 } //end showActions()
 
+//show subactions:
+$('.sub-action').on("click", function(e){
+			let action = e.target.value;
+			let section = $(e.target).parents('.sub-action');
+			section.find('.active').hide().removeClass('active');
+			section.find('.'+action).show().addClass('active');
 
-	$('.type').click( function(e){
-		showActions(e, 'type');
+
 	})
 
-	$('.sub-action').on("click", function(e){
-			showActions(e, 'sub');
-		})
 
 //modal
 $(".close, .overlay").on("click", function(){
    $(".overlay, .modal").removeClass("active");
+
 });
 
 $(document).keyup(function(e) {
