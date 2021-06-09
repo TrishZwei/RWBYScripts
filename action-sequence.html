@@ -92,11 +92,8 @@ nav ul {
 
 	}
 
-/*	
-.active{
-		background-color: yellow;
-	}
-*/
+	
+
 
 @media only screen and (min-width: 620px){
 		nav ul {
@@ -321,6 +318,7 @@ let totalActions = 0;
 
 
 	$('.type').click( function(e){
+		console.log('type')
 		let action = e.target.value;
    	let section = $(e.target).parents('.one-action');
    	//check to see if this section has already been checked....
@@ -333,11 +331,11 @@ let totalActions = 0;
    	section.find('.active').hide().removeClass('active');
    	section.find('.sub-action input:checked').prop('checked', false);
    	section.find('.'+action).show().addClass('active');
-   	//none of these actions get added to the list of actions.
 
 	})
 
 	$('.sub-action').on("click", function(e){
+		console.log('sub-action')
 		let action = e.target.value;
 		let section = $(e.target).parents('.sub-action');
 		//there should be one action per section.
@@ -361,9 +359,10 @@ let totalActions = 0;
 			$('.section-two').show();
 
 		}
-		
-		
 
+		section.find('.active').hide().removeClass('active');
+		section.find('.'+action).show().addClass('active');
+		
 		})
 
 function checkActionTotal(){
@@ -403,13 +402,17 @@ function checkActionTotal(){
 				if(clickedSection == 'section-two' || clickedSection == 'section-one' ){
 					actionsList[1] = '';
 					actionsList[2] = '';
-				$('.section-two .active input:checked, .section-three .active input:checked ').prop('checked', false);
+				$('.section-two .active input:checked, .section-three .active input:checked').prop('checked', false);
 				$('.section-three').hide().find('.active').removeClass('active');
 				
 				}else if (clickedSection == 'section-three'){
 					actionsList[2] = '';
-				$('.section-three').hide();
+					let checked = $('.section-three .active input:checked').val()
+					$('.section-three .active '+' .'+checked).hide().removeClass('active');
+
 				$('.section-three .active input:checked').prop('checked', false);
+				$('.section-three').hide().find('.active').removeClass('active');
+				
 				}				
 				//re-run checkActionTotal
 				checkActionTotal();
@@ -429,16 +432,6 @@ function checkActionTotal(){
 
 	return totalActions;
 } //end showActions()
-
-//show subactions:
-$('.sub-action').on("click", function(e){
-			let action = e.target.value;
-			let section = $(e.target).parents('.sub-action');
-			section.find('.active').hide().removeClass('active');
-			section.find('.'+action).show().addClass('active');
-
-
-	})
 
 
 //modal
